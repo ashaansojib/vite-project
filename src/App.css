@@ -1,0 +1,19 @@
+div#root {
+  width: 1000px;
+  margin: 0 auto;
+}
+.content-area {
+  background-color: goldenrod;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+.dataArea {
+  border: 2px solid greenyellow;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.container{
+  width: 1000px;
+  margin: 0 auto;
+}
