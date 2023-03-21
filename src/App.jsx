@@ -1,10 +1,42 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+/* need to install vs code
+react extaintion pack
+*/
 function App(){
   return(
     <div className='container'>
-      <UserData></UserData>
+      {/* <UserData></UserData> */}
+      <LoadCountries></LoadCountries>
+    </div>
+  )
+}
+// load countries
+function LoadCountries(){
+  const [countries, setCountries] = useState([]);
+  useEffect( () =>{
+    fetch('https://restcountries.com/v3.1/all')
+    .then(res => res.json())
+    .then(data => setCountries(data))
+  }, []);
+  return(
+    <div className='dataArea'>
+      {
+        countries.map( country => DisplayCountry(country))
+      }
+    </div>
+  )
+}
+// display country 
+function DisplayCountry(props){
+  console.log(props.flags.png)
+  return(
+    <div className='content-area'>
+      <div className='img-area'>
+        <img src={props.flags.png} alt="" />
+      </div>
+      <h2>{props.name.common}</h2>
     </div>
   )
 }
@@ -39,6 +71,5 @@ function displayUser(props){
     </div>
   )
 }
-
 
 export default App
